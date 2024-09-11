@@ -38,7 +38,7 @@ jobs:
       - name: Build 
         run: dotnet MSbuild
       - name: Public .NET
-        run: dotnet publish Mantimentos.csproj -o docs
+        run: dotnet publish Mantimentos.csproj -C:Release -o docs --nologo
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
