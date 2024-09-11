@@ -41,7 +41,11 @@ jobs:
         run: dotnet publish Mantimentos.csproj -o docs
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          name: dev-settings
+          path: Mantimentos/appsettings.json
+          if-no-files-found: error
 
   # Deployment job
   deploy:
