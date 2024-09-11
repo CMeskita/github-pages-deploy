@@ -36,7 +36,10 @@ jobs:
             dotnet-version: 8.0.x
             
       - name: Build 
-        run: msbuild Mantimentos.csproj.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: dotnet MSbuild
+      - name: Public .NET
+        run: dotnet publish Mantimentos.csproj.user -C Release -o docs --no-logo
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
