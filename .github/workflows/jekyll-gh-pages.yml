@@ -29,12 +29,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+        uses: actions/setup-dotnet@v3
         with:
-          source: ./
-          destination: ./_site
+          dotnet-version: '8.0.x'
+          source-url: https://cmeskita.github.io/github-pages-deploy/
+      - name: Build 
+        run: dotnet build
+      - name: Public .NET
+        run: dotnet publish Mantimentos.csproj -C Release -o docs --no-logo
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
