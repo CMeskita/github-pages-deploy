@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with: 
           name: dev-settings
-          path: Mantimentos/
+          path: .github/workflows
           if-no-files-found: error
 
   # Deployment job
