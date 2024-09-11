@@ -28,11 +28,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-          source-url: https://cmeskita.github.io/github-pages-deploy/
+
       - name: Build 
         run: dotnet build
         
