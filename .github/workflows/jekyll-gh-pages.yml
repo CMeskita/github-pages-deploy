@@ -34,15 +34,14 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
             dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore
             
-      - name: Build 
-        run: dotnet MSbuild
-        
-      - name: Changes base
-        run: sed -1 's/<base href"\/" \/>/<base href="\/Mantimentos\/" \/>/g' docs/wwwroot
+      - name: Build the project
+        run: dotnet build --configuration Release --no-restore
          
       - name: Public .NET
-        run: dotnet publish Mantimentos.csproj  -o docs --nologo
+        run: dotnet publish -c Release -o ./publish
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -60,4 +59,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages-artifact@v3
