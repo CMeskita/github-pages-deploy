@@ -37,6 +37,10 @@ jobs:
             
       - name: Build 
         run: dotnet MSbuild
+        
+      - name: Changes base
+        run: sed -1 's/<base href"\/" \/>/<base href="\/Mantimentos\/" \/>/g' docs/wwwroot
+         
       - name: Public .NET
         run: dotnet publish Mantimentos.csproj  -o docs --nologo
         
